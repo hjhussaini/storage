@@ -1,0 +1,36 @@
+[Unit]
+Description=Storage Service
+ConditionPathExists=/usr/sbin/storage-service
+After=network.target
+ 
+[Service]
+Type=simple
+User=root
+Group=root
+LimitNOFILE=1024
+
+Restart=on-failure
+RestartSec=10
+# startLimitIntervalSec=60
+
+WorkingDirectory=/
+ExecStart=/usr/sbin/storage-service
+
+Environment=PORT=2022
+Environment=DATABASE=/var/lib/service/storage.sqlite
+Environment=LOG_FILE=/var/log/service/storage.log
+
+# make sure log directory exists and owned by syslog
+PermissionsStartOnly=true
+ExecStartPre=/bin/mkdir -p /var/lib/service
+ExecStartPre=/bin/chown root.root /var/lib/service
+ExecStartPre=/bin/chmod 755 /var/lib/service
+ExecStartPre=/bin/mkdir -p /var/log/service
+ExecStartPre=/bin/chown root.root /var/log/service
+ExecStartPre=/bin/chmod 755 /var/log/service
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=storage-service
+ 
+[Install]
+WantedBy=multi-user.target
