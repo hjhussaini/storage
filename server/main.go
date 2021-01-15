@@ -7,6 +7,8 @@ import (
 	"os"
 	"os/signal"
 
+	"github.com/hjhussaini/storage/proto"
+	"github.com/hjhussaini/storage/rpc"
 	"google.golang.org/grpc"
 )
 
@@ -20,6 +22,9 @@ func main() {
 
 	options := []grpc.ServerOption{}
 	server := grpc.NewServer(options...)
+
+	storage := rpc.Storage{}
+	proto.RegisterStorageServer(server, &storage)
 
 	errs := make(chan error, 2)
 	go func() {
