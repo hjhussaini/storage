@@ -1,0 +1,24 @@
+version: "2"
+
+services:
+    server:
+        container_name: storage.server
+        image: storage.server
+        build:
+            context: ./
+            dockerfile: storage-server.dockerfile
+        environment:
+            - ADDRESS=0.0.0.0:50051
+        ports:
+            - 14001:50051
+
+    client:
+        container_name: storage.client
+        image: storage.client
+        build:
+            context: ./
+            dockerfile: storage-client.dockerfile
+        environment:
+            - ADDRESS=0.0.0.0:14002
+        ports:
+            - 14002:14002
