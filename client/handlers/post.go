@@ -3,8 +3,8 @@ package handlers
 import (
 	"net/http"
 
-	"gitlab.com/hajihussaini/storage-service/dbx"
-	"gitlab.com/hajihussaini/storage-service/models"
+	"github.com/hjhussaini/storage/dbx"
+	"github.com/hjhussaini/storage/models"
 )
 
 // swagger:route POST /dropbox/login

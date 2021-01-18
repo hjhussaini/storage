@@ -6,8 +6,8 @@ import (
 
 	"github.com/dropbox/dropbox-sdk-go-unofficial/dropbox"
 	"github.com/gorilla/mux"
+	"github.com/hjhussaini/storage/models"
 	"github.com/jinzhu/gorm"
-	"gitlab.com/hajihussaini/storage-service/models"
 )
 
 type Storage struct {

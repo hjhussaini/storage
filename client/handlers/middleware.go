@@ -3,8 +3,8 @@ package handlers
 import (
 	"net/http"
 
-	"gitlab.com/hajihussaini/storage-service/dbx"
-	"gitlab.com/hajihussaini/storage-service/models"
+	"github.com/hjhussaini/storage/dbx"
+	"github.com/hjhussaini/storage/models"
 )
 
 // authorized checks the request is authorized and calls next if ok
@@ -18,9 +18,9 @@ func (storage *Storage) authorized(next http.Handler) http.Handler {
 			if login.Token == "" {
 				writer.WriteHeader(http.StatusNonAuthoritativeInfo)
 				models.WriteJSON(
-				GenericError{Message: "Non-Authoritative Information"},
-				writer,
-			)
+					GenericError{Message: "Non-Authoritative Information"},
+					writer,
+				)
 				return
 			}
 			storage.dropboxConfiguration = dbx.Root(login.Token)

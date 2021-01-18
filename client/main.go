@@ -9,10 +9,10 @@ import (
 	"time"
 
 	"github.com/gorilla/mux"
+	"github.com/hjhussaini/storage/handlers"
+	"github.com/hjhussaini/storage/models"
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/sqlite"
-	"gitlab.com/hajihussaini/storage-service/handlers"
-	"gitlab.com/hajihussaini/storage-service/models"
 )
 
 func main() {
@@ -26,7 +26,7 @@ func main() {
 	}
 	defer logFile.Close()
 
-	logger := log.New(logFile, "storage-service", log.LstdFlags)
+	logger := log.New(logFile, "storage", log.LstdFlags)
 	validation := models.NewValidation()
 	database, err := gorm.Open("sqlite3", databasePath)
 	if err != nil {

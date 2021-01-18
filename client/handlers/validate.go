@@ -3,7 +3,7 @@ package handlers
 import (
 	"net/http"
 
-	"gitlab.com/hajihussaini/storage-service/models"
+	"github.com/hjhussaini/storage/models"
 )
 
 func (storage *Storage) validate(

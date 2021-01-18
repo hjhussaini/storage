@@ -5,8 +5,8 @@ import (
 	"os"
 	"time"
 
-	"gitlab.com/hajihussaini/storage-service/dbx"
-	"gitlab.com/hajihussaini/storage-service/models"
+	"github.com/hjhussaini/storage/dbx"
+	"github.com/hjhussaini/storage/models"
 )
 
 func (storage *Storage) uploadToDropbox(upload *models.Upload, save bool) {
