@@ -6,8 +6,9 @@ option go_package = "proto";
 
 message FileRequest {
     oneof data {
-        string file_name = 1;
-        bytes chunks = 2;
+        uint32 machine_id = 1;
+        string file_name = 2;
+        bytes chunk = 3;
     };
 }
 

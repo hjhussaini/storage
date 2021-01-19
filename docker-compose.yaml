@@ -9,6 +9,7 @@ services:
             dockerfile: storage-server.dockerfile
         environment:
             - ADDRESS=0.0.0.0:50051
+            - STORAGE_PATH=./images
         ports:
             - 14001:50051
 

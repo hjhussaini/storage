@@ -14,6 +14,7 @@ import (
 
 func main() {
 	address := os.Getenv("ADDRESS")
+	path := os.Getenv("STORAGE_PATH")
 
 	listener, err := net.Listen("tcp", address)
 	if err != nil {
@@ -23,7 +24,9 @@ func main() {
 	options := []grpc.ServerOption{}
 	server := grpc.NewServer(options...)
 
-	storage := rpc.Storage{}
+	storage := rpc.Storage{
+		Path: path,
+	}
 	proto.RegisterStorageServer(server, &storage)
 
 	errs := make(chan error, 2)
