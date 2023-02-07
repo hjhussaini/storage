@@ -7,6 +7,11 @@ import (
     "github.com/sethvargo/go-envconfig"
 )
 
+// DropBoxConfig represents DropBox configuration
+type DropBoxConfig struct {
+    Token   string  `env:"DROPBOX_TOKEN,required"`
+}
+
 // HTTPServerConfig represents HTTP server configuration
 type HTTPServerConfig struct {
     Address             string          `env:"HTTP_SERVER_ADDRESS,default=0.0.0.0:80"`
@@ -17,6 +22,7 @@ type HTTPServerConfig struct {
 
 // Configuration represents service configuration
 type Configuration struct {
+    DropBox     DropBoxConfig
     HTTPServer  HTTPServerConfig
 }
 
