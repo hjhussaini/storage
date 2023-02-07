@@ -11,6 +11,7 @@ import (
     "log"
 
     "github.com/hjhussaini/storage-srv-go/config"
+    "github.com/hjhussaini/storage-srv-go/internal/delivery/http/v1"
 )
 
 func main() {
@@ -22,9 +23,11 @@ func main() {
 
     log.Println("running Storage server")
 
+    httpHandler := v1.New(nil)
     errs := make(chan error, 2)
     server := http.Server{
         Addr:               cfg.HTTPServer.Address,
+        Handler:            httpHandler,
         ReadHeaderTimeout:  cfg.HTTPServer.ReadHeaderTimeout,
         ReadTimeout:        cfg.HTTPServer.ReadTimeout,
         WriteTimeout:       cfg.HTTPServer.WriteTimeout,
