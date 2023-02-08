@@ -11,6 +11,7 @@ import (
     "log"
 
     "github.com/hjhussaini/storage-srv-go/config"
+    "github.com/hjhussaini/storage-srv-go/internal/adapter/store"
     "github.com/hjhussaini/storage-srv-go/internal/delivery/http/v1"
 )
 
@@ -20,6 +21,8 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
+
+    store.New(cfg.DropBox.Token)
 
     log.Println("running Storage server")
 
