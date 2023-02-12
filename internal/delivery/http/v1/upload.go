@@ -15,10 +15,18 @@ func (handler *Handler) upload(response http.ResponseWriter, request *http.Reque
     request.Body.Close()
     if err != nil {
         response.WriteHeader(http.StatusBadRequest)
+        response.Write([]byte(err.Error()))
 
         return
     }
 
-    handler.interactor.UploadFile(request.Context(), &uploadRequest)
+    err = handler.interactor.UploadFile(request.Context(), &uploadRequest)
+    if err != nil {
+        response.WriteHeader(http.StatusInternalServerError)
+        response.Write([]byte(err.Error()))
+
+        return
+    }
+
     response.WriteHeader(http.StatusOK)
 }
