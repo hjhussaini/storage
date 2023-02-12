@@ -5,11 +5,11 @@ import (
 )
 
 type Interactor struct {
-    store   contract.CloudStorage
+    cloud   contract.CloudStorage
 }
 
-func New(store contract.CloudStorage) *Interactor {
+func New(cloud contract.CloudStorage) *Interactor {
     return &Interactor{
-        store:  store,
+        cloud:  cloud,
     }
 }

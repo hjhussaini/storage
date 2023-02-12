@@ -10,5 +10,5 @@ type UploadRequest struct {
     To          string  `json:"to"`
     // Determines to delete file after uploading or not
     // required: false
-DeleteFile      bool    `json:"delete_file,omitempty"`
+    DeleteFile  bool    `json:"delete_file,omitempty"`
 }
