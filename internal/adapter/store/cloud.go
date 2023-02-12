@@ -4,7 +4,7 @@ import (
     "github.com/dropbox/dropbox-sdk-go-unofficial/v6/dropbox"
 )
 
-// Cloud implements contract.StorageCloud interface
+// Cloud implements contract.CloudStorage interface
 type Cloud struct {
     config  dropbox.Config
 }
