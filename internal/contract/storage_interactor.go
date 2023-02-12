@@ -7,5 +7,5 @@ import (
 )
 
 type StorageInteractor interface {
-    Upload(context.Context, *dto.UploadRequest)
+    UploadFile(context.Context, *dto.UploadRequest) error
 }

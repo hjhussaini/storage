@@ -19,6 +19,6 @@ func (handler *Handler) upload(response http.ResponseWriter, request *http.Reque
         return
     }
 
-    handler.interactor.Upload(request.Context(), &uploadRequest)
+    handler.interactor.UploadFile(request.Context(), &uploadRequest)
     response.WriteHeader(http.StatusOK)
 }
