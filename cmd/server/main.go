@@ -13,6 +13,7 @@ import (
     "github.com/hjhussaini/storage-srv-go/config"
     "github.com/hjhussaini/storage-srv-go/internal/adapter/store"
     "github.com/hjhussaini/storage-srv-go/internal/delivery/http/v1"
+    "github.com/hjhussaini/storage-srv-go/internal/interactor/storage"
 )
 
 func main() {
@@ -22,11 +23,12 @@ func main() {
         log.Fatal(err)
     }
 
-    store.New(cfg.DropBox.Token)
+    cloudStorage := store.New(cfg.DropBox.Token)
+    interactor := storage.New(cloudStorage)
 
     log.Println("running Storage server")
 
-    httpHandler := v1.New(nil)
+    httpHandler := v1.New(interactor)
     errs := make(chan error, 2)
     server := http.Server{
         Addr:               cfg.HTTPServer.Address,
