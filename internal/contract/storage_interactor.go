@@ -8,4 +8,5 @@ import (
 
 type StorageInteractor interface {
     UploadFile(context.Context, *dto.UploadRequest) error
+    ScanDirectory(context.Context, *dto.ScanRequest)
 }
