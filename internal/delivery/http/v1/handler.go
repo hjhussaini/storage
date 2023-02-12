@@ -18,7 +18,7 @@ func New(interactor contract.StorageInteractor) http.Handler {
         interactor: interactor,
     }
 
-    router.HandleFunc("/scan/{directory}", handler.scanDirectory).Methods(http.MethodPost)
+    router.HandleFunc("/scan", handler.scanDirectory).Methods(http.MethodPost)
     router.HandleFunc("/storage/upload", handler.upload).Methods(http.MethodPost)
 
     return router
